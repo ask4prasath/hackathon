@@ -47,6 +47,7 @@ gem "pry"
 #gem 'capistrano-rails', group: :development
 gem 'capistrano',  '~> 3.1'
 gem 'capistrano-rails', '~> 1.1', group: :development
+gem 'capistrano-bundler', '~> 1.1.2', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

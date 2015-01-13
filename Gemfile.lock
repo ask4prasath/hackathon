@@ -64,6 +64,7 @@ GEM
       yajl-ruby
     hike (1.2.3)
     i18n (0.6.11)
+    io-console (0.4.2)
     jbuilder (2.2.4)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -162,10 +163,12 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano (~> 3.1)
+  capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1)
   coffee-rails (~> 4.0.0)
   devise
   hbase-stargate
+  io-console
   jbuilder (~> 2.0)
   jquery-rails
   nested_form
