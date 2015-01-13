@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= csrf_meta_tags %>
+
+  <title>Rhea</title>
+  <%= stylesheet_link_tag 'admin' %>
+
+  <%= javascript_include_tag 'jquery-1.11.1.min' %>
+
+
+  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+  <script type="text/javascript" src="http://cdn3.devexpress.com/jslib/14.2.3/js/dx.chartjs.js"></script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="page-body skin-navy">
+<div class="settings-pane">
+  <a href="#" data-toggle="settings-pane" data-animate="true">
+    &times;
+  </a>
+</div>
+
+<div class="page-container">
+<div class="sidebar-menu toggle-others fixed">
+  <div class="sidebar-menu-inner">
+    <header class="logo-env">
+
+      <div class="logo">
+        <h1 class="logo-expanded" style="font-family: 'Bangers', cursive; color: white; letter-spacing: 20px;">
+          Rhea
+        </h1>
+
+        <h1 class="logo-collapsed" style="font-family: 'Bangers', cursive; color: white;">
+          R
+        </h1>
+      </div>
+
+
+
+      <div class="mobile-menu-toggle visible-xs">
+
+        <a href="#" data-toggle="mobile-menu">
+          <i class="fa-bars"></i>
+        </a>
+      </div>
+    </header>
+
+    <ul id="main-menu" class="main-menu">
+      <li>
+        <a href="/">
+          <i class="linecons-cloud"></i>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+      <% if current_user.super_admin? %>
+          <li>
+            <a href="/users">
+              <i class="linecons-user"></i>
+              <span class="title">Users</span>
+              <span class="label label-warning pull-right"><%= User.count %></span>
+            </a>
+          </li>
+    <% end %>
+
+
+      <li>
+        <a href="#">
+          <i class="linecons-star"></i>
+          <span class="title">Sources</span>
+          <span class="label label-success pull-right"><%= current_user.sources.count %></span>
+        </a>
+        <ul>
+          <li>
+            <a href="/sources/new">
+              <span class="title">New</span>
+            </a>
+          </li>
+          <li>
+            <a href="/sources">
+              <span class="title">List</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="main-content">
+
+  <nav class="navbar user-info-navbar" role="navigation">
+    <ul class="user-info-menu left-links list-inline list-unstyled">
+
+      <li><!-- You can add "always-visible" to show make the search input visible -->
+        <form class="navbar-form" role="search" method="get" id="search-form" name="search-form">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Search for something…" style="width: 600px;">
+            <button type="button" class="btn btn-success"><i class="linecons-search"></i></button>
+
+          </div>
+        </form>
+      </li>
+
+    </ul>
+
+    <ul class="user-info-menu right-links list-inline list-unstyled">
+
+
+      <li class="hidden-sm hidden-xs">
+        <a href="#" data-toggle="sidebar">
+          <i class="fa-bars"></i>
+        </a>
+      </li>
+
+      <li class="dropdown hover-line">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa-envelope-o"></i>
+          <span class="badge badge-green">15</span>
+        </a>
+
+        <ul class="dropdown-menu user-profile-menu list-unstyled">
+          <li>
+            <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+              <li class="active"><!-- "active" class means message is unread -->
+                <a href="#">
+                    <span class="line">
+                        <strong>Luc Chartier</strong>
+                        <span class="light small">- yesterday</span>
+                    </span>
+
+                    <span class="line desc small">
+                        This ain’t our first item, it is the best of the rest.
+                    </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                    <span class="line">
+                        Hayden Cartwright
+                        <span class="light small">- a week ago</span>
+                    </span>
+
+                    <span class="line desc small">
+                        Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+                    </span>
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+      </li>
+
+
+      <li class="dropdown hover-line">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa-bell-o"></i>
+          <span class="badge badge-purple">15</span>
+        </a>
+
+        <ul class="dropdown-menu user-profile-menu list-unstyled">
+          <li>
+            <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+              <li class="active"><!-- "active" class means message is unread -->
+                <a href="#">
+                    <span class="line">
+                        <strong>Luc Chartier</strong>
+                        <span class="light small">- yesterday</span>
+                    </span>
+
+                    <span class="line desc small">
+                        This ain’t our first item, it is the best of the rest.
+                    </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                    <span class="line">
+                        Hayden Cartwright
+                        <span class="light small">- a week ago</span>
+                    </span>
+
+                    <span class="line desc small">
+                        Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+                    </span>
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+      </li>
+      <li class="dropdown user-profile">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span>
+                    <i class="fa-angle-down"></i>
+                </span>
+        </a>
+
+        <ul class="dropdown-menu user-profile-menu list-unstyled">
+          <li>
+            <a href="/users/edit">
+             <%= image_tag "user-4.png", class: 'img-circle img-inline userpic-32', width: '28', style: 'margin-top: -2px;' %>
+              <%= current_user.email %>
+            </a>
+          </li>
+
+
+          <li>
+            <a href="/users/edit">
+              <i class="fa-wrench"></i>
+              Settings
+            </a>
+          </li>
+          <li class="last">
+            <a href="/users/sign_out">
+              <i class="fa-lock"></i>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <%= yield %>
+
+  <footer class="main-footer sticky footer-type-1">
+    <div class="footer-inner">
+      <div class="footer-text">
+        &copy; 2014
+        <strong>Rhea</strong>
+      </div>
+      <div class="go-up">
+        <a href="#" rel="go-top">
+          <i class="fa-angle-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+
+</div>
+
+<div class="page-loading-overlay">
+  <div class="loader-2"></div>
+</div>
+
+</body>
+
+<%= javascript_include_tag 'admin' %>
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".overWrittenPadding").css("padding-left", "0px")
+    });
+</script>
+
+
+</html>

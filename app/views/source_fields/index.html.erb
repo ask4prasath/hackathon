@@ -1,0 +1,29 @@
+<h1>Listing source_fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key name</th>
+      <th>Field type</th>
+      <th>Source</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @source_fields.each do |source_field| %>
+      <tr>
+        <td><%= source_field.key_name %></td>
+        <td><%= source_field.field_type %></td>
+        <td><%= source_field.source %></td>
+        <td><%= link_to 'Show', source_field %></td>
+        <td><%= link_to 'Edit', edit_source_field_path(source_field) %></td>
+        <td><%= link_to 'Destroy', source_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Source field', new_source_field_path %>

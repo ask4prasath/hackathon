@@ -1,0 +1,205 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+<%= nested_form_for(@source, html: {class: "form-horizontal"}) do |f| %>
+  <% if @source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@source.errors.count, "error") %> prohibited this source from being saved:</h2>
+
+      <ul>
+      <% @source.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="field-1">Event Type</label>
+      <div class="col-sm-10">
+        <%= f.select :event_type, ["JSON"], {}, class: 'form-control' %>
+      </div> <br><br><br>
+
+      <label class="col-sm-2 control-label" for="field-1">Source Id</label>
+      <div class="col-sm-10">
+        <%= f.text_field :source_id, class: 'form-control' %>
+      </div> <br><br><br>
+
+      <label class="col-sm-2 control-label" for="field-1">Validation</label>
+      <div class="col-sm-10">
+        <%= f.check_box :validation, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group-separator"></div>
+
+
+    <%= f.fields_for :source_fields do |task_form| %>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="field-1">Source Fields (<%== task_form.link_to_remove "Remove" %>)</label>
+          <div class="col-sm-10">
+            Name: <%= task_form.text_field :key_name, class: "text" %>
+            Field Type: <%= task_form.select :field_type, ["String", "Integer", "Float", "Timestamp"], {prompt: 'Select Field Type'}, class: "source_type" %>
+            <span class="required" style="display: none;">Required:</span>
+            <%= task_form.check_box :required, style: "display: none;" %>
+            <span class="min" style="display: none;">Min value:</span>
+            <%= task_form.text_field :min_length, style: "display: none;"  %>
+            <span class="max" style="display: none;">Max value:</span>
+            <%= task_form.text_field :max_length, style: "display: none;"  %>
+            <span class="space" style="display: none;">Space Allowed:</span>
+            <%= task_form.check_box :space_allowed, style: "display: none;"  %>
+            <span class="default" style="display: none;">Default Value:</span>
+            <%= task_form.text_field :default_value, style: "display: none;" %>
+          </div>
+          <br><br><br>
+        </div>
+
+    <% end %>
+
+    <p><%= f.link_to_add "Add Source fields", :source_fields, class: 'btn btn-success' %></p>
+    <div class="form-group-separator"></div>
+
+    <%= f.submit 'Submit', class: 'btn btn-success' %>
+<% end %>
+
+
+<%= javascript_include_tag :defaults, "nested_form" %>
+
+<script>
+  var value;
+  $(document.body).on("change", ".source_type", function(){
+      typeValue = $(this).val()
+      $.each($(this).siblings(), function( index, value ) {
+
+        if(typeValue === "String") {
+            if($(value).attr("name") === undefined) {
+               if($(value).attr("class").match(/required/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/default/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/space/)) {
+                    $(value).show()
+               }
+            } else {
+               if($(value).attr("name").match(/required/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/default/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/space/)) {
+                    $(value).show()
+               }
+            }
+        } else if(typeValue === "Integer") {
+           if($(value).attr("name") === undefined) {
+                if($(value).attr("class").match(/required/)) {
+                   $(value).show()
+               } else if($(value).attr("class").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/default/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/space/)) {
+                    $(value).hide()
+               }
+            } else {
+
+               if($(value).attr("name").match(/required/)) {
+                   $(value).show()
+               } else if($(value).attr("name").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/default/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/space/)) {
+                    $(value).hide()
+               }
+            }
+        } else if(typeValue === "Float") {
+            if($(value).attr("name") === undefined) {
+               if($(value).attr("class").match(/required/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/default/)) {
+                    $(value).show()
+               } else if($(value).attr("class").match(/space/)) {
+                    $(value).hide()
+               }
+            } else {
+               if($(value).attr("name").match(/required/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/min/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/default/)) {
+                    $(value).show()
+               } else if($(value).attr("name").match(/space/)) {
+                    $(value).hide()
+               }
+            }
+
+        } else if(typeValue === "Timestamp") {
+             if($(value).attr("name") === undefined) {
+               if($(value).attr("name").match(/required/)) {
+                   $(value).show()
+               } else if($(value).attr("class").match(/min/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/default/)) {
+                    $(value).hide()
+               } else if($(value).attr("class").match(/space/)) {
+                    $(value).hide()
+               }
+            } else {
+               if($(value).attr("name").match(/required/)) {
+                   $(value).show()
+               } else if($(value).attr("name").match(/min/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/max/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/default/)) {
+                    $(value).hide()
+               } else if($(value).attr("name").match(/space/)) {
+                    $(value).hide()
+               }
+           }
+        } else {
+             $(value).hide();
+        }
+      });
+  })
+</script>
+
+</div>
+</div>
+</div>
+</div>

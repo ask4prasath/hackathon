@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-sm-12">
+  <div class="xe-widget xe-counter">
+    <div class="xe-label">
+        <p>
+            <b>Publishing url:</b> http://54.69.164.109:8080/publish <br /><br />
+            <b>Api key:</b> <%= current_user.api_key %><br /><br />
+            <b>Source id:</b> <%= @source.source_id %><br /><br />
+            <b>Source fields:</b> <%= @source.source_fields.collect(&:key_name).join(", ") %>
+        </p>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="col-sm-12">
+    <div class="xe-widget xe-counter">
+        <div id="chart_div"></div>
+    </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+  google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Number of request', 'Succeded', 'Failed'],
+    ['',  <%= @source.publish_success_count %>, <%= @source.publish_failure_count %>]
+  ]);
+
+   var options = {
+    title : 'Your monthly traffic',
+    vAxis: {title: "Request"},
+    hAxis: {title: "Number of Publishes"},
+    seriesType: "bars",
+    series: {5: {type: "line"}}
+  };
+
+
+  var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+
+    </script>
+
+
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>

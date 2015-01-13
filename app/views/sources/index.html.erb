@@ -1,0 +1,55 @@
+
+<div class="page-title">
+
+  <div class="title-env">
+    <h1 class="title">Sources</h1>
+
+    <p class="description">Add or remove sources</p>
+  </div>
+
+  <div class="breadcrumb-env">
+
+    <ol class="breadcrumb bc-1">
+      <li>
+        <a href="/"><i class="fa-home"></i>Home</a>
+      </li>
+      <li class="active">
+        <strong>Manage Admins</strong>
+      </li>
+    </ol>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="xe-widget xe-counter">
+
+      <table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Source Id</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sources.each do |source| %>
+      <tr>
+        <td><%= source.source_id %></td>
+        <td><%= link_to 'Show', source %></td>
+        <td><%= link_to 'Edit', edit_source_path(source) %></td>
+        <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+<%= link_to 'New Source', new_source_path, class: 'btn btn-primary' %>

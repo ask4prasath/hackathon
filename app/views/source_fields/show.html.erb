@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key name:</strong>
+  <%= @source_field.key_name %>
+</p>
+
+<p>
+  <strong>Field type:</strong>
+  <%= @source_field.field_type %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @source_field.source %>
+</p>
+
+<%= link_to 'Edit', edit_source_field_path(@source_field) %> |
+<%= link_to 'Back', source_fields_path %>

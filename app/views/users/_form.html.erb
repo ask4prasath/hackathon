@@ -1,0 +1,94 @@
+<div class="page-title">
+
+  <div class="title-env">
+    <h1 class="title">Manage user</h1>
+
+    <p class="description">Admin Management tool</p>
+  </div>
+
+  <div class="breadcrumb-env">
+
+    <ol class="breadcrumb bc-1">
+      <li>
+        <a href="/"><i class="fa-home"></i>Home</a>
+      </li>
+      <li class="active">
+        <strong>create/edit user</strong>
+      </li>
+    </ol>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+
+<%= form_for(@user, url: :admin_create_users, class: 'form-horizontal') do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="field-1">Email</label>
+
+              <div class="col-sm-10">
+                <%= f.text_field :email, class: 'form-control' %>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="field-1">Password</label>
+
+              <div class="col-sm-10">
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="field-1">Password Confirm</label>
+
+              <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="field-1">Role</label>
+
+              <div class="col-sm-10">
+                <%= f.select :role, ["admin", "super", "others"], {}, class: 'form-control' %>
+              </div>
+            </div>
+
+            <br />
+
+
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+      </div>
+      </div>
+      </div>
+      </div>

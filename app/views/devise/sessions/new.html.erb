@@ -1,0 +1,47 @@
+
+
+
+<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						// Reveal Login form
+						setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+
+						// Set Form focus
+						$("form#login .form-group:has(.form-control):first .form-control").focus();
+					});
+				</script>
+
+
+<!-- Add class "fade-in-effect" for login form effect -->
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "login", class: "login-form fade-in-effect"}) do |f| %>
+
+    <div class="login-header">
+      <a href="#" class="logo">
+        <h1 class="logo-expanded" style="font-family: 'Bangers', cursive; color: #000000; letter-spacing: 20px;">
+          Rhea
+        </h1>
+      </a>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="passwd">Email</label>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="passwd">Password Confirmation</label>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary  btn-block text-left">
+        <i class="fa-lock"></i>
+        Login
+      </button>
+    </div>
+<% end %>
+
+
+
