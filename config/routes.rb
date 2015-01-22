@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     get 'reset_password/:email' => :reset_password, on: :collection, as: :reset_password
     post '/admin/create' => :create, on: :collection, as: :admin_create
+    get 'notications' => :notications, on: :collection
   end
 
 

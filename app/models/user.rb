@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
   self.default_scope { includes(:sources).order('created_at ASC') }
 
-
   def super_admin?
     self.role == "super"
   end

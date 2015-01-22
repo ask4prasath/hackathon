@@ -5,14 +5,10 @@ class UsersController < ApplicationController
 
   layout "admin", except: "reset_password"
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
@@ -23,6 +19,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def notications
+
   end
 
   # POST /users

@@ -131,9 +131,9 @@
 							argumentField: "id"
 						},
 						series: [
-							{ valueField: "x1", name: "Total Events", color: '#3366CC'},
-							{ valueField: "x2", name: "Valid Events", color: '#006600'},
 							{ valueField: "x3", name: "Invalid Events ", color: '#990033'},
+                            { valueField: "x2", name: "Valid Events", color: '#006600'},
+                            { valueField: "x1", name: "Total Events", color: '#3366CC'}
 						],
 //						legend: {
 //							verticalAlignment: "bottom",
@@ -170,12 +170,15 @@
                             }
 
                         },
-						valueAxis: {
+                        palette: 'Soft',
+                        valueAxis: {
 							max: 1000,
                             label: {
                                 visible: true
-                            }
-						},
+                            },
+                            grid: { visible: true },
+                            showZero: true
+                        },
 						animation: {
 							enabled: false
 						}
@@ -243,7 +246,6 @@
                     $.each(tmpStack.reverse(), function(index, value) {
                         if(value != undefined) {
                             if(value["id"] === "4 sec ago") {
-                                console.log("coming here");
                             } else {
                                 value["id"] =   5 - index  + ' sec ago'
                                 chart_data.push(value)
@@ -365,51 +367,39 @@
   </div>
 </div>
 
+</div>
+
+
+
+<section class="profile-env">
 
 <div class="row">
-  <div class="col-sm-12">
 
-    <div class="chart-item-bg">
-      <div id="pageviews-stats" style="height: 320px; padding: 20px 0;"></div>
 
-      <div class="chart-entry-view">
-        <div class="chart-entry-label">
-          Api
-        </div>
-        <div class="chart-entry-value">
-          <div class="sparkline first-month"></div>
-        </div>
-      </div>
 
-      <div class="chart-entry-view">
-        <div class="chart-entry-label">
-          Kafka
-        </div>
-        <div class="chart-entry-value">
-          <div class="sparkline second-month"></div>
-        </div>
-      </div>
+<div class="col-sm-12">
 
-      <div class="chart-entry-view">
-        <div class="chart-entry-label">
-          Spark
-        </div>
-        <div class="chart-entry-value">
-          <div class="sparkline third-month"></div>
-        </div>
-      </div>
+<!-- User timeline stories -->
+<section class="user-timeline-stories">
 
-      <div class="chart-entry-view">
-        <div class="chart-entry-label">
-          Hbase
-        </div>
-        <div class="chart-entry-value">
-          <div class="sparkline third-month"></div>
-        </div>
-      </div>
-    </div>
+<!-- Timeline Story Type: Status -->
+<article class="timeline-story">
+  <header>
+    <p><i class="fa-bell-slash-o" style="color: indianred;"></i>  &nbsp; Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
+  </header>
+</article>
 
-  </div>
-</div>
+  <article class="timeline-story">
+    <header>
+      <p><i class="fa-exclamation-circle" style="color: indigo;"></i>  &nbsp; Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
+    </header>
+  </article>
+
+
+</section>
+
 </div>
 
+</div>
+
+</section>
