@@ -18,14 +18,13 @@ $(function() {
 
     request.onOpen = function(response) {
         console.log("connected")
-        subSocket.push("5022d9105e2a0132e43c0a5f603a4ac0::ask4prasath");
+        subSocket.push("6a9a98405e270132e43b0a5f603a4ac0::ask4prasath");
     };
 
     request.onMessage = function(rs) {
-
         console.log(rs)
-
         var serverStats = jQuery.parseJSON(rs.responseBody)
+        console.log(serverStats)
         networkRealtimeChartTick(serverStats.totalPerSec,  serverStats.successPerSec, serverStats.failurePerSec);
         networkRealtimeGaugeTick(serverStats.guage);
 
