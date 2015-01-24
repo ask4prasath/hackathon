@@ -24,7 +24,6 @@ $(function() {
     request.onMessage = function(rs) {
         console.log(rs)
         var serverStats = jQuery.parseJSON(rs.responseBody)
-        console.log(serverStats)
         networkRealtimeChartTick(serverStats.totalPerSec,  serverStats.successPerSec, serverStats.failurePerSec);
         networkRealtimeGaugeTick(serverStats.guage);
 
@@ -45,6 +44,11 @@ $(function() {
                 articles.last().remove()
             }
         }
+
+        $(".totalPerSec").text(serverStats.totalPerSec);
+        $(".totalCount").text(serverStats.totalCount);
+        $(".successCount").text(serverStats.successCount);
+        $(".failureCount").text(serverStats.failureCount);
 //        networkRealtimeMBupdate()
     }
 
