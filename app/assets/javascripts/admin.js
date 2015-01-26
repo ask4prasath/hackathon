@@ -28,21 +28,33 @@ $(function() {
         networkRealtimeGaugeTick(serverStats.guage);
 
         if(serverStats.alert.length > 0) {
-            $(".badge-green").text(parseInt($(".badge-green").text()) + 1)
-            $(".user-timeline-stories").prepend('<article class="timeline-story"><header><p><i class="fa-bell-slash-o" style="color: indianred;"></i>  &nbsp; '  + serverStats.alert +   '</p></header></article>')
+            $(".badge-yellow").text(parseInt($(".badge-yellow").text()) + 1)
+            $(".user-timeline-stories").prepend('<article class="timeline-story"><header><p><i class="fa-bell-slash-o" style="color: indianred;"></i>  &nbsp; '  + serverStats.alert +   '</p></header></article>');
+
+            $(".rulesOld").html("<a>" + $(".rulesNew").text() + "</a>");
+            $(".rulesNew").html("<a>" + serverStats.alert + "</a>");
+
             var articles = $(".user-timeline-stories article")
             if(articles.size() > 10) {
                 articles.last().remove()
             }
+
+            $.post("/alerts", {"rule": {"source_id": "1", "value":  serverStats.alert }})
         }
 
         if(serverStats.rule.length > 0) {
-            $(".badge-purple").text(parseInt($(".badge-purple").text()) + 1)
+            $(".badge-danger").text(parseInt($(".badge-danger").text()) + 1)
             $(".user-timeline-stories").prepend('<article class="timeline-story"><header><p><i class="fa-exclamation-circle" style="color: indianred;"></i>  &nbsp; '  + serverStats.rule +   '</p></header></article>')
+
+            $(".alertOld").html("<a>" + $(".alertNew").text() + "</a>");
+            $(".alertNew").html("<a>" + serverStats.rule + "</a>");
+
             var articles = $(".user-timeline-stories article")
             if(articles.size() > 10) {
                 articles.last().remove()
             }
+
+            $.post("/rules", {"rule": {"source_id": "1", "value":  serverStats.rule }})
         }
 
         $(".totalPerSec").text(serverStats.totalPerSec);

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :alerts
+
+  resources :rules
+
   resources :source_fields
 
   resources :sources
