@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>Source</th>
       <th>Text</th>
       <th colspan="3"></th>
     </tr>
@@ -12,16 +11,11 @@
   <tbody>
     <% @rules.each do |rule| %>
       <tr>
-        <td><%= rule.source %></td>
         <td><%= rule.text %></td>
-        <td><%= link_to 'Show', rule %></td>
-        <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
-        <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Rule', new_rule_path %>
+<%= will_paginate @rules %>

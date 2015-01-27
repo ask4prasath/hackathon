@@ -125,7 +125,7 @@
       <li class="dropdown hover-line">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa-bell-slash-o"></i>
-          <span class="badge badge-yellow">0</span>
+          <span class="badge badge-yellow"><%= Alert.count %></span>
         </a>
 
         <ul class="dropdown-menu user-profile-menu list-unstyled">
@@ -145,15 +145,15 @@
       <li class="dropdown hover-line">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa-exclamation-circle"></i>
-          <span class="badge badge-danger">0</span>
+          <span class="badge badge-danger"><%= Rule.count %></span>
         </a>
 
         <ul class="dropdown-menu user-profile-menu list-unstyled">
           <li class="alertNew">
-            <a></a>
+            <a><%= Rule.last.text %></a>
           </li>
-          <li class="alertOld">
-            <a></a>
+          <li>
+            <a><%= Rule.first.text %></a>
           </li>
           <li>
             <a href="/rules">View All</a>

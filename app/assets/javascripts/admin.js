@@ -39,7 +39,7 @@ $(function() {
                 articles.last().remove()
             }
 
-            $.post("/alerts", {"rule": {"source_id": "1", "value":  serverStats.alert }})
+            $.post("/alerts", {"alert": {"source_id": "1", "text":  serverStats.alert }})
         }
 
         if(serverStats.rule.length > 0) {
@@ -48,12 +48,10 @@ $(function() {
 
             $(".alertOld").html("<a>" + $(".alertNew").text() + "</a>");
             $(".alertNew").html("<a>" + serverStats.rule + "</a>");
-
             var articles = $(".user-timeline-stories article")
             if(articles.size() > 10) {
                 articles.last().remove()
             }
-
             $.post("/rules", {"rule": {"source_id": "1", "value":  serverStats.rule }})
         }
 
