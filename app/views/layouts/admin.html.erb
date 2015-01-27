@@ -11,7 +11,6 @@
 
   <%= javascript_include_tag 'jquery-1.11.1.min' %>
 
-
   <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
   <script type="text/javascript" src="http://cdn3.devexpress.com/jslib/14.2.3/js/dx.chartjs.js"></script>
 
@@ -130,10 +129,10 @@
 
         <ul class="dropdown-menu user-profile-menu list-unstyled">
           <li class="rulesNew">
-            <a></a>
+            <a><%= Alert.last.text %></a>
           </li>
           <li class="rulesOld">
-            <a></a>
+            <a><%= Alert.first.text %></a>
           </li>
           <li>
             <a href="/alerts">View All</a>

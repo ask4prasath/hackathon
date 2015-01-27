@@ -381,18 +381,13 @@
 <!-- User timeline stories -->
 <section class="user-timeline-stories">
 
-<!-- Timeline Story Type: Status -->
-<article class="timeline-story">
-  <header>
-    <p><i class="fa-bell-slash-o" style="color: indianred;"></i>  &nbsp; Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-  </header>
-</article>
-
+  <% Rule.order("id desc").limit(10).each do |rule| %>
   <article class="timeline-story">
     <header>
-      <p><i class="fa-exclamation-circle" style="color: indigo;"></i>  &nbsp; Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
+      <p><i class="fa-exclamation-circle" style="color: indigo;"></i>  &nbsp; <%= rule.text %> </p>
     </header>
   </article>
+    <% end %>
 
 
 </section>

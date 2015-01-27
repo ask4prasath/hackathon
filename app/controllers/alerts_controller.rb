@@ -6,7 +6,7 @@ class AlertsController < ApplicationController
   # GET /alerts
   # GET /alerts.json
   def index
-    @alerts = Alert.all
+    @alerts = Alert.paginate(:page => params[:page])
   end
 
   # GET /alerts/1

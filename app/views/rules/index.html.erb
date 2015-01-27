@@ -1,10 +1,11 @@
-<h1>Listing rules</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="xe-widget xe-counter">
 
-<table>
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th>Text</th>
-      <th colspan="3"></th>
+      <th>Rules</th>
     </tr>
   </thead>
 
@@ -17,5 +18,9 @@
   </tbody>
 </table>
 
+      <%= will_paginate @rules %>
+</div>
+</div>
+</div>
 
-<%= will_paginate @rules %>
+
