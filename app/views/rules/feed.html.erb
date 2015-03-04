@@ -1,0 +1,18 @@
+<% if @rules.present? %>
+
+      <% @rules.each do |rule| %>
+          <article class="timeline-story">
+            <header>
+              <p><i class="fa-exclamation-circle" style="color: indigo;"></i>  &nbsp; <%= rule.text %></p>
+            </header>
+          </article>
+      <% end %>
+
+      <br />
+<a href="/rules/feed?page=<%= params[:page].to_i + 2 %>">next page</a>
+
+<% else %>
+
+   <b>All feeds loaded</b>
+
+<% end %>

@@ -55,4 +55,4 @@ gem 'capistrano-bundler', '~> 1.1.2', group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'io-console'
-gem 'will_paginate'
+gem 'will_paginate_mongoid'

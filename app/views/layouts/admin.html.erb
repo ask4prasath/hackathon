@@ -128,12 +128,11 @@
         </a>
 
         <ul class="dropdown-menu user-profile-menu list-unstyled">
-          <li class="rulesNew">
-            <a><%= Alert.last.text %></a>
-          </li>
-          <li class="rulesOld">
-            <a><%= Alert.first.text %></a>
-          </li>
+          <% Alert.order("id desc").limit(2).to_a.each_with_index  do |alert, index| %>
+              <li class="<% index == 0 ? 'alertNew' : 'alertOld'  %>">
+                <a><%= alert.text %></a>
+              </li>
+          <% end %>
           <li>
             <a href="/alerts">View All</a>
           </li>
@@ -148,12 +147,12 @@
         </a>
 
         <ul class="dropdown-menu user-profile-menu list-unstyled">
-          <li class="alertNew">
-            <a><%= Rule.last.text %></a>
+          <% Rule.order("id desc").limit(2).each_with_index  do |rule, index| %>
+          <li class="<%= index.zero? ? 'ruleNew' : 'ruleOld' %>">
+            <a><%= rule.text %></a>
           </li>
-          <li>
-            <a><%= Rule.first.text %></a>
-          </li>
+          <% end %>
+
           <li>
             <a href="/rules">View All</a>
           </li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126213045) do
+ActiveRecord::Schema.define(version: 20150225214240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150126213045) do
   end
 
   add_index "source_fields", ["source_id"], name: "index_source_fields_on_source_id", using: :btree
+
+  create_table "source_rules", force: true do |t|
+    t.string   "source_id"
+    t.string   "name"
+    t.string   "action"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sources", force: true do |t|
     t.string   "name"

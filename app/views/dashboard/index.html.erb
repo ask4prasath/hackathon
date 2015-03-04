@@ -374,28 +374,15 @@
 
 <section class="profile-env">
 
-<div class="row">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- User timeline stories -->
+      <section class="user-timeline-stories">
 
+  <a href="/rules/feed">next page</a>
 
-
-<div class="col-sm-12">
-
-<!-- User timeline stories -->
-<section class="user-timeline-stories">
-
-  <% Rule.order("id desc").limit(10).each do |rule| %>
-  <article class="timeline-story">
-    <header>
-      <p><i class="fa-exclamation-circle" style="color: indigo;"></i>  &nbsp; <%= rule.text %> </p>
-    </header>
-  </article>
-    <% end %>
-
-
-</section>
-
-</div>
-
-</div>
+     </section>
+        </div>
+      </div>
 
 </section>

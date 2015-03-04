@@ -39,6 +39,7 @@
     <% @sources.each do |source| %>
       <tr>
         <td><%= source.source_id %></td>
+        <td><%= link_to 'New Rule', new_source_source_rule_path(source) %></td>
         <td><%= link_to 'Show', source %></td>
         <td><%= link_to 'Edit', edit_source_path(source) %></td>
         <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>

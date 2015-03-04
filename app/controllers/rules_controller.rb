@@ -3,10 +3,16 @@ class RulesController < ApplicationController
   protect_from_forgery with: :exception, except: :create
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
 
+
   # GET /rules
   # GET /rules.json
   def index
-    @rules = Rule.paginate(:page => params[:page])
+    @rules = Rule.paginate(:page => params[:page]).order("id desc")
+  end
+
+  def feed
+    @rules = Rule.paginate(:page => params[:page]).order("id desc")
+    render :layout => false
   end
 
   # GET /rules/1
@@ -73,6 +79,6 @@ class RulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rule_params
-      params.require(:rule).permit(:source_id, :text)
+      params.require(:rule).permit(:source_id, :text, :value)
     end
 end

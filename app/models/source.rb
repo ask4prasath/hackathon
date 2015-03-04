@@ -2,12 +2,13 @@ class Source < ActiveRecord::Base
 
   belongs_to :user
   has_many :source_fields
+  has_many :source_rules
 
   accepts_nested_attributes_for :source_fields
 
   validates :source_id, presence: true, length: { minimum: 10  }, uniqueness: {scope: [:user_id]}
 
-  after_save :create_or_update_hbase
+  after_save :create_or_update_source, :create_or_update_rule
   after_create :create_kafka_topic
 
   HBASE_CLIENT = Stargate::Client.new("http://localhost:12323")
@@ -32,11 +33,13 @@ class Source < ActiveRecord::Base
     @rows ||= HBASE_CLIENT.show_row('apiRequestTable', api_source_id).columns rescue []
   end
 
-  private
-
-  def create_or_update_hbase
+  def create_or_update_source
     # HBASE_CLIENT.create_row('source', "#{api_source_id}", Time.now.to_i, {name: "metadata:metadata", value: {name: self.name, event_type: self.event_type}.to_json})
     HBASE_CLIENT.create_row('source', "#{api_source_id}", Time.now.to_i, {name: "fields:fields", value: source_fields.collect(&:as_json).to_json})
+  end
+
+  def create_or_update_rule
+    HBASE_CLIENT.create_row('source_rule', "#{api_source_id}", Time.now.to_i, {name: "rule:rule", value: source_rules.collect(&:as_json).to_json})
   end
 
 end

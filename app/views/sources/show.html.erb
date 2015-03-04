@@ -10,52 +10,22 @@
             <b>Source fields:</b> <%= @source.source_fields.collect(&:key_name).join(", ") %>
         </p>
 
+      <ul class="list-group">
+
+        <li class="list-group-item">Source Rules</li>
+
+        <% @source.source_rules.each do |rule| %>
+
+
+              <li class="list-group-item"><%= rule.name %>  <%= rule.action %>  <%= rule.value %></li>
+
+
+         <% end %>
+      </ul>
+
     </div>
   </div>
 </div>
-
-
-<div class="col-sm-12">
-    <div class="xe-widget xe-counter">
-        <div id="chart_div"></div>
-    </div>
-</div>
-
-
-
-
-
-
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-
-  google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawVisualization);
-
-function drawVisualization() {
-
-  var data = google.visualization.arrayToDataTable([
-    ['Number of request', 'Succeded', 'Failed'],
-    ['',  <%= @source.publish_success_count %>, <%= @source.publish_failure_count %>]
-  ]);
-
-   var options = {
-    title : 'Your monthly traffic',
-    vAxis: {title: "Request"},
-    hAxis: {title: "Number of Publishes"},
-    seriesType: "bars",
-    series: {5: {type: "line"}}
-  };
-
-
-  var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
-
-
-    </script>
-
-
 
 <%= link_to 'Edit', edit_source_path(@source) %> |
 <%= link_to 'Back', sources_path %>

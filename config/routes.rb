@@ -2,11 +2,15 @@ Rails.application.routes.draw do
 
   resources :alerts
 
-  resources :rules
+  resources :rules do
+    get "feed", on: :collection
+  end
 
   resources :source_fields
 
-  resources :sources
+  resources :sources do
+    resources :source_rules
+  end
 
   devise_for :users
 

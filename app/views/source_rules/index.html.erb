@@ -1,0 +1,31 @@
+<h1>Listing source_rules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Name</th>
+      <th>Action</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @source_rules.each do |source_rule| %>
+      <tr>
+        <td><%= source_rule.source %></td>
+        <td><%= source_rule.name %></td>
+        <td><%= source_rule.action %></td>
+        <td><%= source_rule.value %></td>
+        <td><%= link_to 'Show', source_rule %></td>
+        <td><%= link_to 'Edit', edit_source_rule_path(source_rule) %></td>
+        <td><%= link_to 'Destroy', source_rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Source rule', new_source_source_rule_path %>
