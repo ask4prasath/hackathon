@@ -11,7 +11,7 @@ class Source < ActiveRecord::Base
   after_save :create_or_update_source, :create_or_update_rule
   after_create :create_kafka_topic
 
-  HBASE_CLIENT = Stargate::Client.new("http://localhost:12323")
+  HBASE_CLIENT = Stargate::Client.new("http://54.68.26.107:12323")
 
   def api_source_id
     "#{self.user.api_key}::#{self.source_id}"
