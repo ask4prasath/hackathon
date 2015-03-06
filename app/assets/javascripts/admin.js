@@ -9,7 +9,7 @@ $(function() {
     var subSocket;
 
     var request = {
-        url: "http://54.68.26.107:8090/rheaSocketApi/v1/6a9a98405e270132e43b0a5f603a4ac0::ask4prasath123",
+        url: "http://54.68.26.107:8090/rheaSocketApi/v1/6a9a98405e270132e43b0a5f603a4ac0::air_quality",
         contentType: "application/json",
         logLevel: 'debug',
         transport: 'websocket',
@@ -18,7 +18,7 @@ $(function() {
 
     request.onOpen = function(response) {
         console.log("connected")
-        subSocket.push("6a9a98405e270132e43b0a5f603a4ac0::ask4prasath123");
+        subSocket.push("6a9a98405e270132e43b0a5f603a4ac0::air_quality");
     };
 
     request.onMessage = function(rs) {
