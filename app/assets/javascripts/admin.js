@@ -9,7 +9,7 @@ $(function() {
     var subSocket;
 
     var request = {
-        url: "http://localhost:8090/rheaSocketApi/v1/cdd91420a49f01325ec428cfe9171be1::ask4prasath",
+        url: "http://54.68.26.107:8090/rheaSocketApi/v1/cdd91420a49f01325ec428cfe9171be1::ask4prasath",
         contentType: "application/json",
         logLevel: 'debug',
         transport: 'websocket',
