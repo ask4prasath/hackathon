@@ -147,7 +147,7 @@
 							visible: false
 						},
 						argumentAxis: {
-                            type: 'discrete',
+                            type: 'numeric',
                             argumentType: 'string',
 //                            categories: ["3 sec ago", "2 sec ago", "1 sec ago", "just now"],
                             position: "bottom",
@@ -171,7 +171,6 @@
                         },
                         palette: 'Soft',
                         valueAxis: {
-							max: 1000,
                             label: {
                                 visible: true
                             },
@@ -179,7 +178,7 @@
                             showZero: true
                         },
 						animation: {
-							enabled: false
+							enabled: true
 						}
 					}).data('iCount', 0);
 
@@ -258,7 +257,7 @@
                         chart_data.shift()
                     }
 
-					chart_data.push({id: 'just now', x1: total_count, x2: success_count  ,x3: failure_count});
+					chart_data.push({id: 'just now', x1: parseInt(total_count), x2: parseInt(success_count), x3: parseInt(failure_count)});
 					$('#realtime-network-stats').dxChart('instance').option('dataSource', chart_data);
 				}
 
