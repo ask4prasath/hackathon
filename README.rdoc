@@ -1,11 +1,6 @@
-== README
-
-=== Capistrano
-
-01) Add to Gemfile:
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-rails', '~> 1.1', group: :development
-
-02) Run: bundle install
-
-03) Run: cap install
+Start Hbase , Zookeeper and load the data
+rake db:create db:migrate 
+rails s to start the webapp 
+storm jar rhea_storm.jar to start the storm
+sbt & container:start to start the socket app
+sbt & container:start to start the api app
